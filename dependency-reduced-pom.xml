@@ -104,10 +104,17 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <dependency>
+      <groupId>drupi.xyz</groupId>
+      <artifactId>Spigot-Legacy</artifactId>
+      <version>1.0.0</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/libs/Drupi-Spigot-Legacy.jar</systemPath>
+    </dependency>
   </dependencies>
   <properties>
-    <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 </project>
 

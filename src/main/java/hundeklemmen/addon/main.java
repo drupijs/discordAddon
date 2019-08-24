@@ -1,11 +1,8 @@
 package hundeklemmen.addon;
 
 import hundeklemmen.addon.discord.discordbot;
-import hundeklemmen.api.DrupiAPI;
-import hundeklemmen.api.DrupiLoadEvent;
+import hundeklemmen.legacy.addon.DrupiAddon;
 import net.dv8tion.jda.core.JDA;
-import org.bukkit.Bukkit;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -14,7 +11,7 @@ import java.util.HashMap;
 public class main extends JavaPlugin implements Listener {
 
     private static main instance;
-    private static DrupiAPI Drupi;
+    private static DrupiAddon Drupi;
 
     public static boolean update = false;
     public static HashMap<String, JDA> discordBots = new HashMap<String, JDA>();
@@ -26,12 +23,9 @@ public class main extends JavaPlugin implements Listener {
 
         instance.getLogger().info("Drupi Discord Addon has been enabled");
 
-        instance.getServer().getPluginManager().registerEvents(this, this);
-        instance.getServer().getPluginManager().registerEvents(new eventHandler(), this);
-
         //register our addon
         instance.getLogger().info("Registering Discord addon");
-        Drupi = new DrupiAPI("discord");
+        Drupi = new DrupiAddon("discord", new discordbot(instance));
         instance.getLogger().info("Drupi Discord Addon has been registered");
 
     }
@@ -41,18 +35,12 @@ public class main extends JavaPlugin implements Listener {
         instance.getLogger().info("Drupi Discord Addon has been disabled");
     }
 
-    @EventHandler
-    public void DrupiLoad(DrupiLoadEvent event){
-        //registering a class
-        Drupi.register(new discordbot(instance));
-    }
-
 
     public static main getInstance(){
         return instance;
     }
 
-    public static DrupiAPI getDrupi(){
+    public static DrupiAddon getDrupi(){
         return Drupi;
     }
 

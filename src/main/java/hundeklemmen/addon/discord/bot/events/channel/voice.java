@@ -1,6 +1,6 @@
 package hundeklemmen.addon.discord.bot.events.channel;
 
-import hundeklemmen.main;
+import hundeklemmen.addon.main;
 import net.dv8tion.jda.core.events.channel.voice.VoiceChannelCreateEvent;
 import net.dv8tion.jda.core.events.channel.voice.VoiceChannelDeleteEvent;
 import net.dv8tion.jda.core.events.channel.voice.update.*;
@@ -57,17 +57,8 @@ public class voice extends ListenerAdapter {
     }
 
 
-    public void callMessageEvent(Object event, String functionName){
-        functionName = "discord_"+botName+"_" + functionName;
-        if (main.engine.get(functionName) == null) {
-            return;
-        }
-        try {
-            ((Invocable) main.engine).invokeFunction(functionName, event);
-        } catch (final Exception se) {
-            main.instance.getLogger().warning("Error while calling " + functionName);
-            se.printStackTrace();
-        }
-    }
 
+    public void callMessageEvent(Object event, String functionName){
+        main.getDrupi().callEvent(functionName, event);
+    }
 }

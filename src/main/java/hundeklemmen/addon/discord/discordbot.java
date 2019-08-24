@@ -1,7 +1,6 @@
 package hundeklemmen.addon.discord;
 
 import hundeklemmen.addon.discord.bot.bot;
-import hundeklemmen.main;
 
 public class discordbot {
 

@@ -1,5 +1,6 @@
 package hundeklemmen.addon.discord.bot.events.message;
 
+import hundeklemmen.addon.main;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageDeleteEvent;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageEmbedEvent;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
@@ -54,18 +55,9 @@ public class guild extends ListenerAdapter {
         callMessageEvent(event, event.getClass().getSimpleName());
     }
 
+
     public void callMessageEvent(Object event, String functionName){
-        functionName = "discord_"+botName+"_" + functionName;
-        if (hundeklemmen.main.engine.get(functionName) == null) {
-            return;
-        }
-        try {
-            hundeklemmen.main.instance.getLogger().info(functionName + "    has been fired! COMPLETE");
-            ((Invocable) hundeklemmen.main.engine).invokeFunction(functionName, event);
-        } catch (final Exception se) {
-            hundeklemmen.main.instance.getLogger().warning("Error while calling " + functionName);
-            se.printStackTrace();
-        }
+        main.getDrupi().callEvent(functionName, event);
     }
 
 }

@@ -30,9 +30,11 @@
     <dependencies>
         <!-- Drupi API Start -->
         <dependency>
-            <groupId>com.github.drupijs.Drupi-JS</groupId>
-            <artifactId>drupi</artifactId>
-            <version>LATEST</version>
+            <groupId>drupi.xyz</groupId>
+            <artifactId>Spigot-Legacy</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/libs/Drupi-Spigot-Legacy.jar</systemPath>
         </dependency>
         <!-- Drupi API End -->
         <dependency>

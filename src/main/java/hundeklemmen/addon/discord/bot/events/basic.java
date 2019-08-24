@@ -33,16 +33,7 @@ public class basic extends ListenerAdapter {
     }
 
     public void callMessageEvent(Object event, String functionName){
-        functionName = "discord_"+botName+"_" + functionName;
-        if (hundeklemmen.main.engine.get(functionName) == null) {
-            return;
-        }
-        try {
-            ((Invocable) hundeklemmen.main.engine).invokeFunction(functionName, event);
-        } catch (final Exception se) {
-            hundeklemmen.main.instance.getLogger().warning("Error while calling " + functionName);
-            se.printStackTrace();
-        }
+        main.getDrupi().callEvent(functionName, event);
     }
 
 }
